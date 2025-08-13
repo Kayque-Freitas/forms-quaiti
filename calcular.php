@@ -62,54 +62,59 @@ if ($sexo == "masculino") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resultado</title>
-    <style>body {
+    <style>
+        body {
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto;
-            padding: 30px;
-            background-color: rgb(250, 198, 164);
-            background-image: url("https://st3.depositphotos.com/1743476/15014/i/950/depositphotos_150142562-stock-photo-group-of-doctors-meeting.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            margin: 0;
+            background: #f7f7f7;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
         }
-
         main {
-            width: 50%;
-            height: 600px;
-            background-color: rgb(248, 141, 69);
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.438);
-            border: 2px solid #000;
+            width: 100%;
+            max-width: 400px;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            padding: 32px 24px;
+            border: none;
         }
-
-        form {
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
         fieldset {
             border: none;
-
+            padding: 0;
+            margin: 0;
         }
-
-        .buttons {
-            display: flex;
-            justify-content: center;
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #ff7f50;
+            letter-spacing: 1px;
         }
-
-        h1{
-            text-align: center;
+        .info {
+            font-size: 1rem;
+            color: #444;
+            margin: 8px 0;
         }
-
-        fieldset{
-            padding: 10%;
-            margin: 60px;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 10px;
-            text-align: center;
+        .imc {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #0077b6;
+            margin: 18px 0 8px 0;
         }
-        </style>
+        .classificacao {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #ff7f50;
+            margin-bottom: 16px;
+        }
+        .label {
+            font-weight: 600;
+            color: #888;
+        }
+    </style>
 </head>
 <body>
     <main>
@@ -117,13 +122,13 @@ if ($sexo == "masculino") {
             <fieldset>
                 <?php
                 echo "<h1>Resultado do IMC</h1>";
-                echo "<p>Nome: $nome</p>";
-                echo "<p>Idade: $idade anos</p>";
-                echo "<p>Peso: $peso kg</p>";
-                echo "<p>Altura: $altura m</p>";
-                echo "<p>Sexo: $sexo</p>";
-                echo "<p>IMC: " . number_format($imc, 2, ',', '.') . "</p>";
-                echo "<p>Classificação: $resultado</p>";
+                echo "<div class='info'><span class='label'>Nome:</span> $nome</div>";
+                echo "<div class='info'><span class='label'>Idade:</span> $idade anos</div>";
+                echo "<div class='info'><span class='label'>Peso:</span> $peso kg</div>";
+                echo "<div class='info'><span class='label'>Altura:</span> $altura m</div>";
+                echo "<div class='info'><span class='label'>Sexo:</span> $sexo</div>";
+                echo "<div class='imc'>IMC: " . number_format($imc, 2, ',', '.') . "</div>";
+                echo "<div class='classificacao'>Classificação: $resultado</div>";
                 ?>
             </fieldset>
         </form>
