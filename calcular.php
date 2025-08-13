@@ -6,21 +6,54 @@ $peso = $_POST ["peso"];
 $altura = $_POST ["altura"];
 $sexo = $_POST ["sexo"];
 
-$imc = ($altura * $altura) / $peso;
+$imc = $peso / ($altura * $altura);
 
-if ($imc < 18.5) {
-    $resultado = "Abaixo do peso";
-} elseif ($imc >= 18.5 && $imc < 24.9) {
-    $resultado = "Peso normal";
-} elseif ($imc >= 25 && $imc < 29.9) {
-    $resultado = "Sobrepeso I (leve)";
-} elseif ($imc >= 30 && $imc < 34.9) {
-    $resultado = "Obesidade II (moderada)";
-} elseif ($imc >= 35 && $imc < 39.9) {
-    $resultado = "Obesidade severa III (grande)";
+if ($sexo == "masculino") {
+    if ($imc < 18.5) {
+        $resultado = "Abaixo do peso";
+    } elseif ($imc >= 18.5 && $imc < 24.9) {
+        $resultado = "Peso normal";
+    } elseif ($imc >= 25 && $imc < 29.9) {
+        $resultado = "Sobrepeso";
+    } elseif ($imc >= 30 && $imc < 34.9) {
+        $resultado = "Obesidade grau I";
+    } elseif ($imc >= 35 && $imc < 39.9) {
+        $resultado = "Obesidade grau II";
+    } else {
+        $resultado = "Obesidade grau III";
+    }
+} else if ($sexo == "feminino") {
+    if ($imc < 18.5) {
+        $resultado = "Abaixo do peso";
+    } elseif ($imc >= 18.5 && $imc < 23.9) {
+        $resultado = "Peso normal";
+    } elseif ($imc >= 24 && $imc < 28.9) {
+        $resultado = "Sobrepeso";
+    } elseif ($imc >= 29 && $imc < 33.9) {
+        $resultado = "Obesidade grau I";
+    } elseif ($imc >= 34 && $imc < 38.9) {
+        $resultado = "Obesidade grau II";
+    } else {
+        $resultado = "Obesidade grau III";
+    }
 } else {
-    $resultado = "Obesidade mórbida IIII (extrema)";
+    // Caso não informado, usa padrão OMS
+    if ($imc < 18.5) {
+        $resultado = "Abaixo do peso";
+    } elseif ($imc >= 18.5 && $imc < 24.9) {
+        $resultado = "Peso normal";
+    } elseif ($imc >= 25 && $imc < 29.9) {
+        $resultado = "Sobrepeso";
+    } elseif ($imc >= 30 && $imc < 34.9) {
+        $resultado = "Obesidade grau I";
+    } elseif ($imc >= 35 && $imc < 39.9) {
+        $resultado = "Obesidade grau II";
+    } else {
+        $resultado = "Obesidade grau III";
+    }
 }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +100,16 @@ if ($imc < 18.5) {
 
         h1{
             text-align: center;
-        }</style>
+        }
+
+        fieldset{
+            padding: 10%;
+            margin: 60px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            text-align: center;
+        }
+        </style>
 </head>
 <body>
     <main>
